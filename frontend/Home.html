@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      *{
+        scroll-behavior: smooth;
+      }
+      a {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">Employees</h1>
+    <div class="container">
+      <section>
+        <ul class="nav bg-light nav-pills p-2 rounded">
+          <li class="nav-item mx-1">
+            <a class="nav-link active" id="getAllEmp">All Employees</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" id="addEmp" href="#addEmployee">Add new employee</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" id="updateEmp">Update Employee</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" id="deleteEmp">Delete Employee</a>
+          </li>
+        </ul>
+      </section>
+      <section class="row w-75 mx-auto my-5" id="table">
+        <table class="table table-hover text-center">
+          <thead class="bg-info text-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">City</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </section>
+      <section class="w-75 mx-auto bg-info border border-primary rounded p-4 my-5" id="addEmployee">
+        <h3 class="text-center text-white">Add New Employee</h3>
+        <div class="form-group">
+          <label for="empName" class="h4 text-white">Employee Name</label>
+          <input type="text" name="empName" id="empName" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="empCity" class="h4 text-white">Employee City</label>
+          <input type="text" name="empCity" id="empCity" class="form-control"/>
+        </div>
+        <button class="btn btn-block w-50 ml-auto btn-light" id="addEmpBtn">Add Employee</button>
+      </section>
+      <section class="w-75 mx-auto bg-info border border-primary rounded p-4 my-5" id="updateEmployee">
+        <h3 class="text-center text-white">Update Employee</h3>
+        <div class="form-group">
+          <label for="empName" class="h4 text-white">Employee Name</label>
+          <input type="text" name="empName" id="updatedEmpName" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <label for="empCity" class="h4 text-white">Employee City</label>
+          <input type="text" name="empCity" id="updatedEmpCity" class="form-control"/>
+        </div>
+        <button class="btn btn-block w-50 ml-auto btn-light" id="updateEmpBtn">Update Employee</button>
+      </section>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
