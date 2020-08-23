@@ -1,7 +1,7 @@
 const api = "http://localhost:2020";
 
 // Populate employee table
-const populate = () => {
+const populate = (callback) => {
   $.get(api + "/employees", data => {
     $("#tableBody").find("tr").remove();
     $.each(data, (i, v) => {
@@ -11,20 +11,21 @@ const populate = () => {
       <td>${v.empName}</td>
       <td>${v.empCity}</td>
       <td>
-      <button class="btn btn-sm btn-info text-white font-weight-bold m-1 rounded" empId=${v.empId} id="updateEmpBtn">Update</button>
-      <button class="btn btn-sm btn-danger text-white font-weight-bold m-1 rounded" empId=${v.empId} id="deleteEmpBtn">Delete</button>
+      <button class="btn btn-sm btn-info text-white font-weight-bold m-1 rounded updateEmpBtn" empId=${v.empId}>Update</button>
+      <button class="btn btn-sm btn-danger text-white font-weight-bold m-1 rounded deleteEmpBtn" empId=${v.empId}>Delete</button>
       </td>
     </tr>
     `;
       $("#tableBody").append(row);
     });
-    handleClick();
+    callback();
   });
 };
 
 // Handles section and nav link fade animation
 const handleFade = (navBtnId, divId) => {
   $("#addEmployee").hide();
+  $("#updateEmployee").hide();
   let active;
 
   $(navBtnId).click(function () {
@@ -39,7 +40,7 @@ const handleFade = (navBtnId, divId) => {
 
 // Handles click event
 const handleClick = () => {
-  $("#updateEmpBtn").click(function () {
+  $(".updateEmpBtn").click(function () {
     console.log("Update");
     let empData = {
       empId: $(this).attr("empId"),
@@ -50,7 +51,7 @@ const handleClick = () => {
     console.log(empData);
 
   });
-  $("#deleteEmpBtn").click(function () {
+  $(".deleteEmpBtn").click(function () {
     console.log("Delete");
   });
 };
@@ -88,7 +89,7 @@ const handleSubmit = () => {
 };
 
 const init = () => {
-  populate();
+  populate(handleClick);
   handleSubmit();
   handleFade("#getAllEmp", "#table");
   handleFade("#addEmp", "#addEmployee");
